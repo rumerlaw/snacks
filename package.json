@@ -1,0 +1,65 @@
+{
+  "name": "snack-drink-inventory",
+  "productName": "Snack and Drink Inventory",
+  "version": "1.0.0",
+  "description": "Snack and drink stock list that keeps its data in a shared Excel spreadsheet.",
+  "main": "main.js",
+  "author": "Snack and Drink Inventory",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --publish never"
+  },
+  "devDependencies": {
+    "electron": "44.10.0",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "appId": "com.snackdrink.inventory",
+    "productName": "Snack and Drink Inventory",
+    "files": [
+      "index.html",
+      "main.js",
+      "preload.js",
+      "icon.svg",
+      "icon-192.png",
+      "icon-512.png",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        "portable"
+      ]
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "category": "public.app-category.business",
+      "identity": null
+    },
+    "afterPack": "build/adhoc-sign.js",
+    "asar": true,
+    "electronFuses": {
+      "runAsNode": false,
+      "enableCookieEncryption": false,
+      "enableNodeOptionsEnvironmentVariable": false,
+      "enableNodeCliInspectArguments": false,
+      "enableEmbeddedAsarIntegrityValidation": true,
+      "onlyLoadAppFromAsar": true,
+      "loadBrowserProcessSpecificV8Snapshot": false,
+      "grantFileProtocolExtraPrivileges": false,
+      "resetAdHocDarwinSignature": true
+    }
+  }
+}

@@ -1,0 +1,11 @@
+SNACK & DRINK INVENTORY
+=======================
+Same app as SP Inventory, for snacks and drinks. The stock list lives in one Excel file in Dropbox.
+
+  Phone:     https://rumerlaw.github.io/snacks/   (open in Safari or Chrome, then "Add to Home Screen")
+  Computer:  the Downloads page of this project (Releases > latest)
+
+Typing:  "24 gatorade 0.56 2"   "bought 35 coke for 19.29 sell for 2"   "new Sprite, .55, 24, 2"
+         "sold 2 gatorade" / "-2 gatorade"   "+24 coke"   "lost 1 banana"   "price coke 2.50"
+
+Built from SP Inventory: after SP Inventory changes, run  python3 tools/make_from_sp.py ../sp
