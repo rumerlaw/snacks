@@ -7,6 +7,7 @@ import re, sys, os, hashlib, base64
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 NAME = 'Snack & Drink Inventory'
 PHONE_URL = 'https://rumerlaw.github.io/snacks/'
+DBX_KEY = 'vyunkynze20qjde'  # the Snack & Drink Dropbox app (its own app, separate from SP Inventory's)
 
 def must(s, a, b, n=1):
     c = s.count(a)
@@ -173,6 +174,7 @@ def transform(html, phone):
 
     if phone:
         js = must(js, '"redirect": "https://rumerlaw.github.io/sp/"', '"redirect": "' + PHONE_URL + '"')
+        js = must(js, '"key": "5dqv7rvruwnnu5f"', '"key": "' + DBX_KEY + '"')
         js = js.replace("prompt('Name for the new spreadsheet','" + NAME + "')", "prompt('Name for the new spreadsheet','Snack and Drink Inventory')")
     # ---- security policy: fingerprints of the new scripts ----
     hs = ["'sha256-" + base64.b64encode(hashlib.sha256(x.encode('utf-8')).digest()).decode() + "'" for x in re.findall(r'<script>(.*?)</script>', js, re.S)]
